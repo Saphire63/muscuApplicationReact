@@ -1,3 +1,6 @@
+
+import "../css/global.css"
+import "../css/machineCard.css"
 function MachineCard({machine}){
 
 

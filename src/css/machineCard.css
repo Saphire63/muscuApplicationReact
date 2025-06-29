@@ -1,0 +1,301 @@
+/* MachineCard.css */
+
+.machine-card {
+  background: var(--dark-gray);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid var(--border-gray);
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.machine-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-red);
+}
+
+/* Section des informations */
+.machine-infos {
+  padding: var(--spacing-md);
+  background: var(--black);
+  position: relative;
+}
+
+.machine-infos h3 {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  color: var(--white);
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.machine-category {
+  font-size: var(--font-sm);
+  color: var(--primary-red);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
+}
+
+.machine-description {
+  font-size: var(--font-sm);
+  color: #888;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Section poster/image */
+.machine-poster {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(45deg, var(--medium-gray), var(--dark-gray));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.machine-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.machine-card:hover .machine-poster img {
+  transform: scale(1.05);
+}
+
+/* Placeholder pour images manquantes */
+.machine-poster:not(:has(img)),
+.machine-poster img:not([src]) {
+  background: linear-gradient(90deg, var(--medium-gray) 0%, var(--dark-gray) 50%, var(--medium-gray) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: var(--font-lg);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.machine-placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+/* Overlay des contrôles */
+.machine-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  transform: translateY(100%);
+  transition: var(--transition-slow);
+}
+
+.machine-card:hover .machine-overlay {
+  transform: translateY(0);
+}
+
+/* Input de poids */
+.weight-input {
+  flex: 1;
+  padding: 0.75rem var(--spacing-sm);
+  border: 2px solid var(--medium-gray);
+  border-radius: var(--radius);
+  background: rgba(26, 26, 26, 0.9);
+  color: var(--white);
+  font-size: var(--font-base);
+  font-weight: 600;
+  text-align: center;
+  outline: none;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.weight-input:focus {
+  border-color: var(--primary-red);
+  background: var(--dark-gray);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+.weight-input::placeholder {
+  color: #888;
+  font-weight: 400;
+}
+
+/* Boutons d'action */
+.ok-btn, .favorite-btn {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  min-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ok-btn {
+  background: var(--primary-red);
+  color: var(--white);
+  font-size: var(--font-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ok-btn:hover {
+  background: var(--dark-red);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.ok-btn:active {
+  transform: scale(0.98);
+}
+
+.favorite-btn {
+  background: transparent;
+  border: 2px solid var(--medium-gray);
+  font-size: var(--font-lg);
+  backdrop-filter: blur(10px);
+}
+
+.favorite-btn:hover {
+  border-color: var(--primary-red);
+  background: rgba(220, 38, 38, 0.1);
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+  color: var(--white);
+}
+
+/* Badge de statut */
+.machine-status {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  padding: 0.25rem 0.75rem;
+  background: var(--primary-red);
+  color: var(--white);
+  border-radius: var(--radius);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.machine-status.available {
+  background: #10b981;
+}
+
+.machine-status.occupied {
+  background: #f59e0b;
+}
+
+.machine-status.maintenance {
+  background: #6b7280;
+}
+
+/* Indicateur de poids précédent */
+.last-weight {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-sm);
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--white);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-sm);
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .machine-overlay {
+    position: static;
+    transform: none;
+    background: var(--black);
+    border-radius: 0;
+    padding: var(--spacing-sm);
+  }
+  
+  .machine-card:hover .machine-overlay {
+    transform: none;
+  }
+  
+  .machine-poster {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .machine-overlay {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .weight-input {
+    width: 100%;
+  }
+  
+  .ok-btn, .favorite-btn {
+    width: 100%;
+    padding: 0.875rem;
+  }
+  
+  .machine-infos {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Animations spéciales */
+.machine-card.adding {
+  animation: pulse 0.6s ease-out;
+}
+
+.machine-card.favorited .favorite-btn {
+  animation: heartbeat 0.6s ease-out;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* États de focus pour accessibilité */
+.weight-input:focus,
+.ok-btn:focus,
+.favorite-btn:focus {
+  outline: 2px solid var(--primary-red);
+  outline-offset: 2px;
+}
