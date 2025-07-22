@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./css/global.css"
-import "./css/App.css";
+import "./css/app.css";
 import Home from "./pages/Home"
 import Favorites from "./pages/Favorites";
 import NavBar from "./components/NavBar";

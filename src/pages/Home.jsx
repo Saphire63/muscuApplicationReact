@@ -1,4 +1,4 @@
-import MachineCard from "../components/MachineCard"
+import MachineCard from "../components/machineCard.jsx"
 
 import "../css/global.css"
 import "../css/home.css"

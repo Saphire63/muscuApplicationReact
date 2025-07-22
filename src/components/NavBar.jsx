@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom"
-
-import "../css/global.css"
 import "../css/navbar.css"
+import "../css/global.css"
 function NavBar(){
-    return 
-        <nav className="navbar">
+    return (
+        <nav className="navbar" >
             <div className="navbar-brand">
                 <Link to="/">Machine App</Link>
 
@@ -14,6 +13,7 @@ function NavBar(){
                 <Link to="/" className="nav-link">Favorites</Link>
             </div>
         </nav>
+    )
 }
 
 export default NavBar
