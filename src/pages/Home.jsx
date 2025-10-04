@@ -9,10 +9,10 @@ function Home(){
     const [searchQuery, setSearchQuery] = useState ("");{/* set pour changer la valeur et searchQuery qui est la valeur elle meme,
                                                              permet de notifier la vue */}
     const machines =[
-        {id: 1, title: "deadlift"},
-        {id: 2, title: "benchpress"},
-        {id: 3, title: "squat"},
-        {id: 4, title: "incline bench"},
+        {id: 1, title: "deadlift", image : "/images/sdt.jpg", alt : "soulever de terre"},
+        {id: 2, title: "benchpress", image : "/images/developpecouche.jpeg", alt : " développé couché"},
+        {id: 3, title: "squat", image : "/images/squat.jpg", alt : "Squat"},
+        {id: 4, title: "incline bench" , image : "/images/developperincline.png", alt : "développé incliné"},
     ]
 
     const handleSearch = (e) => {

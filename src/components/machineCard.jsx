@@ -4,9 +4,9 @@ import "../css/machineCard.css"
 function MachineCard({machine}){
 
 
-    function OnOkClicked(){
-        alert("ok clicked")
-    }
+    // function OnOkClicked(){
+    //     alert("ok clicked")
+    // }
     function OnFavoriteClicked(){
         alert("favorite clicked")
     }
