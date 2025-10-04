@@ -17,12 +17,12 @@ function MachineCard({machine}){
         </div>
         <div className="machine-poster">
             <img src ={machine.image} alt={machine.title}/>
-            <div className="machine-overlay">
-                <input className="weight-input" type="number">
+            <div className="machine-overlay" >
+                {/* <input className="weight-input" type="number">
                 </input>
                 <button className="ok-btn" onClick={OnOkClicked}>
                     Ok
-                </button>
+                </button> */}
                 <button className="favorite-btn" onClick={OnFavoriteClicked}>
                     ❤️
                 </button>
