@@ -9,6 +9,7 @@ import Home from "./pages/Home"
 import Favorites from "./pages/Favorites";
 import NavBar from "./components/NavBar";
 import AddMachine from "./pages/AddMachine";
+import MachineInfos from "./pages/MachineInfos";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element ={<Home/>}/>
           <Route path="/favorites" element ={<Favorites/>}/>
           <Route path ="/add" element ={<AddMachine/>}/>
+          <Route path ="/machine/:id" element ={<MachineInfos/>}/>
         </Routes>
       </main>
     </div>

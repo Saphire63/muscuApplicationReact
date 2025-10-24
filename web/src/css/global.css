@@ -62,7 +62,7 @@ box-sizing: border-box;
 /* Styles de base */
 body {
 font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-background: linear-gradient(135deg, var(--dark-gray) 0%, var(--black) 100%);
+background:linear-gradient(50deg, var(--primary-red) 25%, var(--dark-red) 40%);
 color: var(--white);
 min-height: 100vh;
 line-height: 1.6;

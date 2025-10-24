@@ -1,7 +1,7 @@
 
 import "../css/global.css"
 import "../css/machineCard.css"
-function MachineCard({machine}){
+function MachineCard({machine,onClick}){
 
 
     // function OnOkClicked(){
@@ -11,7 +11,7 @@ function MachineCard({machine}){
         alert("favorite clicked")
     }
     return (
-    <div className="machine-card">
+    <div className="machine-card" onClick={onClick}>
         <div className="machine-infos">
             <h3>{machine.title}</h3>
         </div>
