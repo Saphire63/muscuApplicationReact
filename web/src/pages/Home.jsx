@@ -16,10 +16,10 @@ function Home(){
     const navigate = useNavigate();
         
     const machines = [
-        new Machine(1, "deadlift", "/images/sdt.jpg", "soulever de terre", 200, 140),
-        new Machine(2, "benchpress", "/images/developpecouche.jpeg", "développé couché", 150, 100),
-        new Machine(3, "squat", "/images/squat.jpg", "Squat", 220, 160),
-        new Machine(4, "incline bench", "/images/developperincline.png", "développé incliné", 120, 80),
+        new Machine("deadlift", "/images/sdt.jpg", "soulever de terre", 200, 140),
+        new Machine("benchpress", "/images/developpecouche.jpeg", "développé couché", 150, 100),
+        new Machine("squat", "/images/squat.jpg", "Squat", 220, 160),
+        new Machine("incline bench", "/images/developperincline.png", "développé incliné", 120, 80),
     ]
     const handleSearch = (e) => {
         e.preventDefault() // empeche le rechargement de la page
@@ -37,7 +37,7 @@ function Home(){
 
 
     const handleMachineClick = (machine) => {
-        navigate(`/machine/${machine.id}`, { state: { machine } })
+        navigate(`/machine/${machine.title}`, { state: { machine } })
     }
 
 
@@ -62,7 +62,7 @@ function Home(){
             {machinesToDisplay.map(machine =>(  // .map parcours toute la liste machines et vas donner l'objet machine qui est égale a machineCard ...
                 <MachineCard
                     machine={machine}
-                    key={machine.id}
+                    key={machine.title}
                     onClick={() => handleMachineClick(machine)}
                 />
             ))}

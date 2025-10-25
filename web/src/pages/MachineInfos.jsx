@@ -2,7 +2,7 @@ import { useLocation, useParams, useNavigate } from "react-router-dom"
 import "../css/global.css"
 import "../css/machineInfos.css"
 function MachineInfos(){
-    const { id } = useParams()
+    const { title } = useParams()
     const location = useLocation()
     const machine = location.state?.machine
     const navigate = useNavigate()
@@ -10,7 +10,7 @@ function MachineInfos(){
     if (!machine) {
         return (
             <div className="machine-info">
-                <h2>Détails de la machine {id}</h2>
+                <h2>Détails de la machine {title}</h2>
                 <p>Aucune donnée de machine fournie (navigué directement ou état manquant).</p>
                 <button onClick={() => navigate(-1)}>Retour</button>
             </div>

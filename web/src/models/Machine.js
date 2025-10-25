@@ -1,6 +1,5 @@
 class Machine {
-    constructor(id, title, image, alt, poidsMax = 0, poidsActuel = 0) {
-        this.id = id
+    constructor( title, image, alt, poidsMax = 0, poidsActuel = 0) {
         this.title = title
         this.image = image
         this.alt = alt
