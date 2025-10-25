@@ -27,6 +27,7 @@ function MachineCard({machine,onClick}){
                     ❤️
                 </button>
             </div>
+
         </div>
         
     </div>

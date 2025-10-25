@@ -10,10 +10,53 @@ function AddMachine(){
     const [poidsMax, setPoidsMax] = useState("")
     const [poidsActuel, setPoidsActuel] = useState("")
     const [message, setMessage] = useState("")
+    const [image, setImage] = useState("")
+
+
+        // Gérer l'upload de l'image
+    const handleImageUpload = (event) => {
+        const file = event.target.files[0]
+        
+        if (file) {
+            // Vérifier que c'est bien une image
+            if (!file.type.startsWith('image/')) {
+                setMessage("Veuillez sélectionner une image")
+                return
+            }
+
+            // Vérifier la taille (2MB max)
+            if (file.size > 2 * 1024 * 1024) {
+                setMessage("L'image est trop grande (max 2MB)")
+                return
+            }
+
+            const reader = new FileReader()
+            
+            reader.onloadend = () => {
+                setImage(reader.result) // Base64 de l'image
+                setMessage("")
+            }
+            
+            reader.onerror = () => {
+                setMessage("Erreur lors de la lecture de l'image")
+            }
+            
+            reader.readAsDataURL(file)
+        }
+    }
+
+
+
+
     const handleAddMachine = (e) => {
         e.preventDefault()
 
-        const image = "noImage"
+        if(!image){
+            setImage="noImage"
+        }
+        if(title ==""){
+            setMessage("entrez un titre")
+        }
         const alt = title ? `${title} image` : "machine image"
 
         const nM = new Machine(
@@ -25,19 +68,24 @@ function AddMachine(){
         )
         // Utiliser console.log au lieu de print
         //stockage de l'info en localStorage:
+
         try{
             const existingMachine = JSON.parse(localStorage.getItem(title))
             if(existingMachine){
                 setMessage("machine déjà existante")
             }
             else{
-                localStorage.setItem(title, JSON.stringify(nM))
+                localStorage.setItem("Machine_"+title, JSON.stringify(nM))
                 setMessage("machine crée")
             }
         }
         catch(err){
             console.log('Erreur sauvegarde machine', err)
             setMessage("probleme lors de la création de machine")
+            setTitle("")
+            setPoidsMax("")
+            setPoidsActuel("")
+            setImage("")
         }
 
     }
@@ -52,6 +100,7 @@ function AddMachine(){
             className="machine-title-input"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            required  
             />
             <input
             type="text"
@@ -65,7 +114,33 @@ function AddMachine(){
             className="mid-weight-input input"
             value={poidsActuel}
             onChange={(e) => setPoidsActuel(e.target.value)}/>
+
+
+            <div className="image-upload-container">
+                    <label htmlFor="image-upload" className="image-upload-label">
+                        {image ? "Changer l'image" : "Sélectionner une image"}
+                    </label>
+                    <input
+                        id="image-upload"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        className="image-upload-input"
+                        style={{ display: 'none' }}
+                    />
+                    
+                    {image && (
+                        <div className="image-preview">
+                            <img 
+                                src={image} 
+                                alt="Aperçu" 
+                                style={{ width: '200px', marginTop: '10px', borderRadius: '8px' }}
+                            />
+                        </div>
+                    )}
+                </div>
             <button type="submit" className="submit-btn">submit</button>
+
         </form>
         {message && <p>{message}</p>}
     </div>

@@ -15,12 +15,31 @@ function Home(){
     const [filteredMachines, setFilteredMachines] = useState([]);{/* pour le futur filtrage */}
     const navigate = useNavigate();
         
-    const machines = [
-        new Machine("deadlift", "/images/sdt.jpg", "soulever de terre", 200, 140),
-        new Machine("benchpress", "/images/developpecouche.jpeg", "développé couché", 150, 100),
-        new Machine("squat", "/images/squat.jpg", "Squat", 220, 160),
-        new Machine("incline bench", "/images/developperincline.png", "développé incliné", 120, 80),
-    ]
+    const getMachinesFromStorage = () => {
+        const machines = [];
+    
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+        
+            if (key && key.startsWith("Machine")) {
+                const machineData = JSON.parse(localStorage.getItem(key));
+                // Recréer l'instance si nécessaire
+                const machine = new Machine(
+                    machineData.title,
+                    machineData.image,
+                    machineData.alt,
+                    machineData.poidsMax,
+                    machineData.poidsActuel,
+                );
+                machines.push(machine);
+            }
+        }
+    
+        return machines;
+    };
+
+    const machines = getMachinesFromStorage();
+
     const handleSearch = (e) => {
         e.preventDefault() // empeche le rechargement de la page
         if (searchQuery.trim() === "") {
@@ -47,6 +66,7 @@ function Home(){
     const machinesToDisplay = filteredMachines.length > 0 
         ? filteredMachines
         : machines;
+
     return( 
     <div className="Home">
         <form onSubmit={handleSearch} className="search-form">
@@ -58,6 +78,8 @@ function Home(){
             onChange={(e) => setSearchQuery(e.target.value)}/> {/* si la search bar a changée alors on change la valeur et le notifie  */}
             <button type="submit" className="submit-btn">🔍</button>
         </form>
+
+
         <div className="machine-list">
             {machinesToDisplay.map(machine =>(  // .map parcours toute la liste machines et vas donner l'objet machine qui est égale a machineCard ...
                 <MachineCard
