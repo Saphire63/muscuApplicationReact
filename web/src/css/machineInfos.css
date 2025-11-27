@@ -1,14 +1,71 @@
 .machine-info {
-    background-color: #2b2b2b;
-    color: white;
-    padding: 20px;
-    border-radius: 12px;
-    margin-top: 20px;
-    text-align: center;
+    background-color: var(--dark-gray);
+    color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin: var(--spacing-lg) auto;
+    box-shadow: var(--shadow-lg);
+    max-width: 800px;
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.machine-info:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
 .machine-info-img {
-    width: 500px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    width: 50%;
+    max-width: 400px;
+    border-radius: var(--radius);
+    object-fit: cover;
+}
+
+.machine-info-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.machine-info-details h2 {
+    font-size: var(--font-2xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.machine-info-details p {
+    font-size: var(--font-base);
+}
+
+.machine-info-details button {
+    margin-top: var(--spacing-md);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--radius);
+    background-color: var(--primary-red);
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.machine-info-details button:hover {
+    background-color: var(--dark-red);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Responsive : image et détails en colonne sur petit écran */
+@media (max-width: 768px) {
+    .machine-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    .machine-info-img {
+        width: 100%;
+        max-width: 500px;
+    }
 }

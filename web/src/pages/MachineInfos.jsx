@@ -1,7 +1,7 @@
 import { useLocation, useParams, useNavigate } from "react-router-dom"
 import "../css/global.css"
 import "../css/machineInfos.css"
-function MachineInfos(){
+function MachineInfos() {
     const { title } = useParams()
     const location = useLocation()
     const machine = location.state?.machine
@@ -19,11 +19,13 @@ function MachineInfos(){
 
     return (
         <div className="machine-info">
-            <button onClick={() => navigate(-1)}>⬅️ Retour</button>
-            <h2>{machine.title}</h2>
             <img src={machine.image} alt={machine.title} className="machine-info-img" />
-            <p>Poids max : {machine.poidsMax}</p>
-            <p>Poids Actuel : {machine.poidsActuel}</p>
+            <div className="machine-info-details">
+                <button onClick={() => navigate(-1)}>⬅️ Retour</button>
+                <h2>{machine.title}</h2>
+                <p>Poids max : {machine.poidsMax}</p>
+                <p>Poids actuel : {machine.poidsActuel}</p>
+            </div>
         </div>
     )
 }
