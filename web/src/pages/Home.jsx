@@ -29,7 +29,7 @@ function Home(){
                     machineData.image,
                     machineData.alt,
                     machineData.poidsMax,
-                    machineData.poidsActuel,
+                    
                 );
                 machines.push(machine);
             }

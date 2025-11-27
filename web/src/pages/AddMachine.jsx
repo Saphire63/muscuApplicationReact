@@ -8,9 +8,9 @@ import "../css/addMachine.css"
 function AddMachine(){
     const [title, setTitle] = useState("")
     const [poidsMax, setPoidsMax] = useState("")
-    const [poidsActuel, setPoidsActuel] = useState("")
     const [message, setMessage] = useState("")
     const [image, setImage] = useState("")
+    
 
 
         // Gérer l'upload de l'image
@@ -53,7 +53,7 @@ function AddMachine(){
         e.preventDefault()
 
         if(!image){
-            setImage="noImage"
+            setImage("NoImage")
         }
         if(title ==""){
             setMessage("entrez un titre")
@@ -64,8 +64,7 @@ function AddMachine(){
             title,
             image,
             alt,
-            Number(poidsMax) || 0,
-            Number(poidsActuel) || 0
+            Number(poidsMax) || 0
         )
         // Utiliser console.log au lieu de print
         //stockage de l'info en localStorage:
@@ -78,6 +77,7 @@ function AddMachine(){
             else{
                 localStorage.setItem("Machine_"+title, JSON.stringify(nM))
                 setMessage("machine crée")
+                
             }
         }
         catch(err){
@@ -85,7 +85,6 @@ function AddMachine(){
             setMessage("probleme lors de la création de machine")
             setTitle("")
             setPoidsMax("")
-            setPoidsActuel("")
             setImage("")
         }
 
@@ -109,12 +108,6 @@ function AddMachine(){
             className="max-weight-input input"
             value={poidsMax}
             onChange={(e) => setPoidsMax(e.target.value)}/>
-            <input
-            type="text"
-            placeholder="Weight Rep"
-            className="mid-weight-input input"
-            value={poidsActuel}
-            onChange={(e) => setPoidsActuel(e.target.value)}/>
 
 
             <div className="image-upload-container">

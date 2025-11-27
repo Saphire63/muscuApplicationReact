@@ -23,8 +23,13 @@ function MachineInfos() {
             <div className="machine-info-details">
                 <button onClick={() => navigate(-1)}>⬅️ Retour</button>
                 <h2>{machine.title}</h2>
-                <p>Poids max : {machine.poidsMax}</p>
-                <p>Poids actuel : {machine.poidsActuel}</p>
+
+                <p>Poids max : {machine.poidsMax} kg</p>
+                
+                    <p>90% : {machine.poidsMax*0.9} kg</p>
+                    <p>85% : {machine.poidsMax*0.85} kg</p>
+                    <p>70% : {machine.poidsMax*0.7} kg</p>
+                <button>Modifier</button>
             </div>
         </div>
     )
