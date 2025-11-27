@@ -1,4 +1,3 @@
-/* global.css - À importer dans main.jsx ou index.js */
 
 /* Reset et variables globales */
 * {
@@ -189,7 +188,7 @@ outline: 2px solid var(--primary-red);
 outline-offset: 2px;
 }
 
-/* Responsive helpers */
+/* Responsive */
 @media (max-width: 768px) {
 :root {
     --spacing-sm: 0.75rem;
