@@ -9,14 +9,14 @@
     background-color: var(--dark-gray);
     border-radius: var(--radius-lg);
 
-    width: fit-content;            /* Ajuste la largeur automatiquement */
-    max-width: 90%;                /* Ne dépasse jamais l'écran */
-    margin: 40px auto;             /* centre le bloc */
+    width: fit-content;
+    max-width: 90%;                
+    margin: 40px auto;             
 }
 
 .boutons-centre button {
-    width: 100%;                   /* s’adapte au conteneur */
-    max-width: 280px;              /* limite sur grand écran */
+    width: 100%;                   
+    max-width: 280px;              
     padding: 18px 24px;
     font-size: 1.3rem;
     font-weight: 600;
