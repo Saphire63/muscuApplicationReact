@@ -19,6 +19,7 @@ function AddMachine(){
         
         if (file) {
             // Vérifier que c'est bien une image
+            // prend en parametre le type MIME ( image/jpeg, image/png, text/html)
             if (!file.type.startsWith('image/')) {
                 setMessage("Veuillez sélectionner une image")
                 return
