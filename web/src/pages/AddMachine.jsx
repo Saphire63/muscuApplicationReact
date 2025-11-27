@@ -1,4 +1,6 @@
 import { use, useState } from "react"
+import { Navigate, useNavigate } from "react-router-dom"
+
 import "../css/global.css"
 import Machine from "../models/Machine.js"
 import "../css/addMachine.css"
@@ -10,7 +12,8 @@ function AddMachine(){
     const [poidsMax, setPoidsMax] = useState("")
     const [message, setMessage] = useState("")
     const [image, setImage] = useState("")
-    
+    const navigate = useNavigate()
+
 
 
         // Gérer l'upload de l'image
@@ -53,7 +56,7 @@ function AddMachine(){
         e.preventDefault()
 
         if(!image){
-            setImage("NoImage")
+            setImage(null)
         }
         if(title ==""){
             setMessage("entrez un titre")
@@ -77,7 +80,12 @@ function AddMachine(){
             else{
                 localStorage.setItem("Machine_"+title, JSON.stringify(nM))
                 setMessage("machine crée")
-                
+                try{
+                    navigate("/askingAdd")
+                }
+                catch(err){
+                    console.log('Erreur lors de la redirection')
+                }
             }
         }
         catch(err){
@@ -123,7 +131,7 @@ function AddMachine(){
                         style={{ display: 'none' }}
                     />
                     
-                    {image && (
+                    {image && image!=="NoImage" &&(
                         <div className="image-preview">
                             <img 
                                 src={image} 

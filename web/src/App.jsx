@@ -10,7 +10,7 @@ import Favorites from "./pages/Favorites";
 import NavBar from "./components/NavBar";
 import AddMachine from "./pages/AddMachine";
 import MachineInfos from "./pages/MachineInfos";
-
+import AskingAdd from "./pages/AskingAdd";
 function App() {
   return (
     <div>
@@ -21,6 +21,7 @@ function App() {
           <Route path="/favorites" element ={<Favorites/>}/>
           <Route path ="/add" element ={<AddMachine/>}/>
           <Route path ="/machine/:id" element ={<MachineInfos/>}/>
+          <Route path ="/askingAdd" element = {<AskingAdd/>}/>
         </Routes>
       </main>
     </div>
